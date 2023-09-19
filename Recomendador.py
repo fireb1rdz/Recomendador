@@ -50,6 +50,17 @@ def listar_filmes():
 def registrar_usuario():
     ...
 
+def avaliar_filme(usuario_nome, filme_id, avaliacao):
+    usuario = usuarios.get(usuario_nome)
+    filme = filmes.get(filme_id)
+    if usuario and filme:
+        if 1 <= avaliacao <= 5:
+            usuario["avaliacoes"][filme_id] = avaliacao
+            print(f"Avaliação do filme '{filme['titulo']}' por {usuario['nome']} atualizada para {avaliacao}.")
+        else:
+            print("Avaliação deve ser um valor entre 1 e 5.")
+    else:
+        print("Usuário ou filme não encontrado.")
 
 
 def favoritar_filme(usuario_nome, filme_id):
