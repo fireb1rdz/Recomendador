@@ -25,10 +25,53 @@ filmes = {
     24: {"titulo": "A 13ª Emenda", "categoria": "Documentário", "avaliacao": 4.8, "favorito": False, "assistido": False},
     25: {"titulo": "A Marcha dos Pingüins", "categoria": "Documentário", "avaliacao": 4.3, "favorito": False, "assistido": False},
 }
+usuarios = {
+    1: {
+        "nome": "Alice",
+        "avaliacoes": {},
+        "filmes_assistidos": {},
+        "filmes_favoritos": {},
+    },
+    2: {
+        "nome": "Bob",
+        "avaliacoes": {},
+        "filmes_assistidos": {},
+        "filmes_favoritos": {},
+    },
 
+}
 
 def listar_filmes():
     for filme_id, filme_info in filmes.items():
         print(
             f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+Avaliar filmes
+
+"""
+def avaliar_filme(usuario_id, filme_id, avaliacao):
+    usuario = usuarios.get(usuario_id)
+    filme = filmes.get(filme_id)
+    if usuario and filme:
+        if 1 <= avaliacao <= 5:
+            usuario["avaliacoes"][filme_id] = avaliacao
+            print(f"Avaliação do filme '{filme['titulo']}' por {usuario['nome']} atualizada para {avaliacao}.")
+        else:
+            print("Avaliação deve ser um valor entre 1 e 5.")
+    else:
+        print("Usuário ou filme não encontrado.")
 
