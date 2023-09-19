@@ -63,8 +63,8 @@ def listar_filmes():
 Avaliar filmes
 
 """
-def avaliar_filme(usuario_id, filme_id, avaliacao):
-    usuario = usuarios.get(usuario_id)
+def avaliar_filme(usuario_nome, filme_id, avaliacao):
+    usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
     if usuario and filme:
         if 1 <= avaliacao <= 5:
