@@ -78,6 +78,18 @@ def registrar_usuario():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 def marcar_assistido(usuario_nome, filme_id):
     usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
