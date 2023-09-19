@@ -25,3 +25,10 @@ filmes = {
     24: {"titulo": "A 13ª Emenda", "categoria": "Documentário", "avaliacao": 4.8, "favorito": False, "assistido": False},
     25: {"titulo": "A Marcha dos Pingüins", "categoria": "Documentário", "avaliacao": 4.3, "favorito": False, "assistido": False},
 }
+
+
+def listar_filmes():
+    for filme_id, filme_info in filmes.items():
+        print(
+            f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
+
