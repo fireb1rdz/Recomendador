@@ -29,13 +29,45 @@ filmes = {
 
 def listar_filmes():
     for filme_id, filme_info in filmes.items():
-        print(
-            f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
+        print(f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
 
-
+        
 def assistidos():
     ...
 
 
 def registrar_usuario():
     ...
+
+
+
+
+
+
+
+
+
+
+def filtrar_categoria(filtrar: str):
+    """
+    Esta função filtra os filmes por categoria.
+
+    Args:
+        filtrar (string): Informa a categoria de filme a ser buscado na listagem dos filmes.
+
+    Returns:
+        string: Puxa as informações dos filmes de acordo com a categoria digitada,
+
+    Exemplo:
+        filtrar_categoria(drama)
+        ID: 4 - Título: Cidade de Deus - Categoria: Drama - Avaliação: 4.7
+    """
+
+    for chave, valor in filmes.items():
+
+        if filtrar in valor['categoria']:
+            print(f"ID: {chave} - Título: {valor['titulo']} - Categoria: {valor['categoria']} - Avaliação: {valor['avaliacao']}")
+
+        elif filtrar not in ["Ação", "Drama", "Comédia", "Ficção Científica", "Animação", "Terror", "Romance", "Fantasia", "Suspense", "Documentário"]:
+            print("A categoria digitada não consta na relação dos filmes.")
+            break

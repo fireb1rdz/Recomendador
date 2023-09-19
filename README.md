@@ -11,6 +11,6 @@ Nomenclaturas:
 | --- |
 | filtrar() |
 | registrar_usuario() |
-| avaliar_comentar() |
+| avaliar() |
 | assistidos() |
 | listar_midias() |
