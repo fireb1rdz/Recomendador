@@ -32,3 +32,10 @@ def listar_filmes():
         print(
             f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
 
+
+def assistidos():
+    ...
+
+
+def registrar_usuario():
+    ...
