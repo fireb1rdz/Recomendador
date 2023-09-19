@@ -31,6 +31,13 @@ def listar_filmes():
     for filme_id, filme_info in filmes.items():
         print(f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
 
+        
+def assistidos():
+    ...
+
+
+def registrar_usuario():
+    ...
 
 
 
@@ -64,7 +71,3 @@ def filtrar_categoria(filtrar: str):
         elif filtrar not in ["Ação", "Drama", "Comédia", "Ficção Científica", "Animação", "Terror", "Romance", "Fantasia", "Suspense", "Documentário"]:
             print("A categoria digitada não consta na relação dos filmes.")
             break
-
-
-filtrar = input("Digite a categória que você deseja filtrar: ").title()
-filtrar_categoria(filtrar)
