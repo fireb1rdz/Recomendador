@@ -1,7 +1,7 @@
 filmes = {
     1: {"titulo": "Matrix", "categoria": "Ação", "avaliacao": 4.5, "favorito": False, "assistido": False},
     2: {"titulo": "Interestelar", "categoria": "Ficção Científica", "avaliacao": 4.8, "favorito": False, "assistido": False},
-    3: {"titulo": "Pantera Negra", "categoria": "Ação", "avaliacao": 4.3, "favorito": False, "assistido": False},
+    3: {"gtitulo": "Pantera Negra", "categoria": "Ação", "avaliacao": 4.3, "favorito": False, "assistido": False},
     4: {"titulo": "Cidade de Deus", "categoria": "Drama", "avaliacao": 4.7, "favorito": False, "assistido": False},
     5: {"titulo": "Breaking Bad", "categoria": "Drama", "avaliacao": 4.9, "favorito": False, "assistido": False},
     6: {"titulo": "Vingadores: Ultimato", "categoria": "Ação", "avaliacao": 4.9, "favorito": False, "assistido": False},
