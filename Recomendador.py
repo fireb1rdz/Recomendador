@@ -57,7 +57,6 @@ def listar_filmes():
 
 
 
-
 """
 
 Avaliar filmes
