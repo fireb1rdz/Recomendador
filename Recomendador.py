@@ -52,42 +52,18 @@ def registrar_usuario():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def favoritar_filme(usuario_nome, filme_id):
+    usuario = usuarios.get(usuario_nome)
+    filme = filmes.get(filme_id)
+    if usuario and filme:
+        if not filme['favorito']:
+            filme['favorito'] = True
+            usuario["filmes_favoritos"][filme_id] = filme['titulo']
+            print(f"Filme '{filme['titulo']}' adicionado aos favoritos de {usuario['nome']}.")
+        else:
+            print("Este filme já está nos favoritos.")
+    else:
+        print("Usuário ou filme não encontrado.")
 
 
 def marcar_assistido(usuario_nome, filme_id):
