@@ -25,15 +25,26 @@ filmes = {
     24: {"titulo": "A 13ª Emenda", "categoria": "Documentário", "avaliacao": 4.8, "favorito": False, "assistido": False},
     25: {"titulo": "A Marcha dos Pingüins", "categoria": "Documentário", "avaliacao": 4.3, "favorito": False, "assistido": False},
 }
+usuarios = {
+    1: {
+        "nome": "Alice",
+        "avaliacoes": {},
+        "filmes_assistidos": {},
+        "filmes_favoritos": {},
+    },
+    2: {
+        "nome": "Bob",
+        "avaliacoes": {},
+        "filmes_assistidos": {},
+        "filmes_favoritos": {},
+    },
 
+}
 
 def listar_filmes():
     for filme_id, filme_info in filmes.items():
         print(f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
 
-        
-def assistidos():
-    ...
 
 
 def registrar_usuario():
@@ -46,6 +57,39 @@ def registrar_usuario():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def marcar_assistido(usuario_nome, filme_id):
+    usuario = usuarios.get(usuario_nome)
+    filme = filmes.get(filme_id)
+    if usuario and filme:
+        if not filme['assistido']:
+            filme['assistido'] = True
+            usuario["filmes_assistidos"][filme_id] = filme['titulo']
+            print(f"Filme '{filme['titulo']}' marcado como assistido por {usuario['nome']}.")
+        else:
+            print("Este filme já foi assistido anteriormente.")
+    else:
+        print("Usuário ou filme não encontrado.")
 
 
 def filtrar_categoria(filtrar: str):
@@ -71,3 +115,4 @@ def filtrar_categoria(filtrar: str):
         elif filtrar not in ["Ação", "Drama", "Comédia", "Ficção Científica", "Animação", "Terror", "Romance", "Fantasia", "Suspense", "Documentário"]:
             print("A categoria digitada não consta na relação dos filmes.")
             break
+
