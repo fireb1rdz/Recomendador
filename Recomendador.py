@@ -58,20 +58,33 @@ def listar_filmes():
 
 
 
-"""
 
-Avaliar filmes
 
-"""
-def avaliar_filme(usuario_nome, filme_id, avaliacao):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def marcar_assistido(usuario_nome, filme_id):
     usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
     if usuario and filme:
-        if 1 <= avaliacao <= 5:
-            usuario["avaliacoes"][filme_id] = avaliacao
-            print(f"Avaliação do filme '{filme['titulo']}' por {usuario['nome']} atualizada para {avaliacao}.")
+        if not filme['assistido']:
+            filme['assistido'] = True
+            usuario["filmes_assistidos"][filme_id] = filme['titulo']
+            print(f"Filme '{filme['titulo']}' marcado como assistido por {usuario['nome']}.")
         else:
-            print("Avaliação deve ser um valor entre 1 e 5.")
+            print("Este filme já foi assistido anteriormente.")
     else:
         print("Usuário ou filme não encontrado.")
 
