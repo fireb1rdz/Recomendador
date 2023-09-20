@@ -41,10 +41,24 @@ def registrar_usuario(nome: str) -> None:
         nome: Recebe o nome do novo usuário
     """
     usuarios[nome] = {
-        "avaliacoes": [],
-        "filmes_assistidos": [],
-        "filmes_favoritos": []
+        "avaliacoes": {},
+        "filmes_assistidos": {},
+        "filmes_favoritos": {}
     }
+
+
+def listar_usuarios():
+    """
+        Esta função lista todos os usuários registrados
+    """
+    print("Lista de usuários registrados:")
+    for usuario, chave in usuarios.items():
+        print(f"""
+        Nome: {usuario}
+        Avaliações: {chave["avaliacoes"]}
+        Filmes assistidos: {chave["filmes_assistidos"]}
+        Filmes favoritos: {chave["filmes_favoritos"]}
+""")
 
 
 def avaliar_filme(usuario_nome: str, filme_id: int, avaliacao: float) -> None:
@@ -61,11 +75,11 @@ def avaliar_filme(usuario_nome: str, filme_id: int, avaliacao: float) -> None:
     if usuario and filme:
         if 1 <= avaliacao <= 5:
             usuario["avaliacoes"][filme_id] = avaliacao
-            print(f"Avaliação do filme '{filme['titulo']}' por {usuario['nome']} atualizada para {avaliacao}.")
+            print(f"\nAvaliação do filme '{filme['titulo']}' por {usuario_nome} atualizada para {avaliacao}")
         else:
-            print("Avaliação deve ser um valor entre 1 e 5.")
+            print("\nAvaliação deve ser um valor entre 1 e 5.")
     else:
-        print("Usuário ou filme não encontrado.")
+        print("\nUsuário ou filme não encontrado.")
 
 
 def favoritar_filme(usuario_nome: str, filme_id: int) -> None:
@@ -83,11 +97,11 @@ def favoritar_filme(usuario_nome: str, filme_id: int) -> None:
         if not filme['favorito']:
             filme['favorito'] = True
             usuario["filmes_favoritos"][filme_id] = filme['titulo']
-            print(f"Filme '{filme['titulo']}' adicionado aos favoritos de {usuario['nome']}.")
+            print(f"\nFilme '{filme['titulo']}' adicionado aos favoritos de {usuario_nome}.")
         else:
-            print("Este filme já está nos favoritos.")
+            print("\nEste filme já está nos favoritos.")
     else:
-        print("Usuário ou filme não encontrado.")
+        print("\nUsuário ou filme não encontrado.")
 
 
 def marcar_assistido(usuario_nome: str, filme_id: int) -> None:
@@ -104,11 +118,11 @@ def marcar_assistido(usuario_nome: str, filme_id: int) -> None:
         if not filme['assistido']:
             filme['assistido'] = True
             usuario["filmes_assistidos"][filme_id] = filme['titulo']
-            print(f"Filme '{filme['titulo']}' marcado como assistido por {usuario['nome']}.")
+            print(f"\nFilme '{filme['titulo']}' marcado como assistido por {usuario_nome}.")
         else:
-            print("Este filme já foi assistido anteriormente.")
+            print("\nEste filme já foi assistido anteriormente.")
     else:
-        print("Usuário ou filme não encontrado.")
+        print("\nUsuário ou filme não encontrado.")
 
 
 def filtrar_categoria(filtrar: str):
@@ -132,6 +146,63 @@ def filtrar_categoria(filtrar: str):
             print(f"ID: {chave} - Título: {valor['titulo']} - Categoria: {valor['categoria']} - Avaliação: {valor['avaliacao']}")
 
         elif filtrar not in ["Ação", "Drama", "Comédia", "Ficção Científica", "Animação", "Terror", "Romance", "Fantasia", "Suspense", "Documentário"]:
-            print("A categoria digitada não consta na relação dos filmes.")
+            print("\nA categoria digitada não consta na relação dos filmes.")
             break
 
+
+
+while True:
+    opcao = int(input("""
+Digite a opção desejada:
+
+1) Listar filmes
+2) Registrar usuário
+3) Listar usuários
+4) Avaliar filme
+5) Favoritar filme
+6) Marcar como assistido
+7) Filtrar por categoria
+0) Sair
+
+Digite a opção desejada: """))
+
+    match opcao:
+        case 1:
+            listar_filmes()
+
+        case 2:
+            nome = str(input("Digite o seu nome de usuário: "))
+            registrar_usuario(nome)
+            print(f"\nUsuário {nome} registrado com sucesso!")
+
+        case 3:
+            listar_usuarios()
+
+        case 4:
+            listar_usuarios()
+            usuario_nome = str(input("\nDigite o nome do usuário: "))
+            listar_filmes()
+            filme_id = int(input("\nDigite o ID do filme à ser avaliado: "))
+            avaliacao = float(input("\nDigite a nota: "))
+            avaliar_filme(usuario_nome, filme_id, avaliacao)
+
+        case 5:
+            listar_usuarios()
+            usuario_nome = str(input("\nDigite o nome do usuário: "))
+            listar_filmes()
+            filme_id = int(input("\nDigite o ID do filme à ser favoritado: "))
+            favoritar_filme(usuario_nome, filme_id)
+
+        case 6:
+            listar_usuarios()
+            usuario_nome = str(input("\nDigite o nome do usuário: "))
+            listar_filmes()
+            filme_id = int(input("\nDigite o ID do filme à ser avaliado: "))
+            marcar_assistido(usuario_nome, filme_id)
+
+        case 7:
+            filtrar = str(input("Digite a categoria desejada: ")).capitalize()
+            filtrar_categoria(filtrar)
+
+        case _:
+            break
