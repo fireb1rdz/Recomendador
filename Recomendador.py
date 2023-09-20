@@ -135,3 +135,13 @@ def filtrar_categoria(filtrar: str):
             print("A categoria digitada não consta na relação dos filmes.")
             break
 
+
+
+num = int(input("Digite a opção desejada: "))
+def menu(num):
+    match num:
+        case 1:
+            listar_filmes()
+        case 2:
+            nome = input("Insira ")
+            registrar_usuario(nome)
