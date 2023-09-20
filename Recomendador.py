@@ -25,32 +25,37 @@ filmes = {
     24: {"titulo": "A 13ª Emenda", "categoria": "Documentário", "avaliacao": 4.8, "favorito": False, "assistido": False},
     25: {"titulo": "A Marcha dos Pingüins", "categoria": "Documentário", "avaliacao": 4.3, "favorito": False, "assistido": False},
 }
-usuarios = {
-    1: {
-        "nome": "Alice",
-        "avaliacoes": {},
-        "filmes_assistidos": {},
-        "filmes_favoritos": {},
-    },
-    2: {
-        "nome": "Bob",
-        "avaliacoes": {},
-        "filmes_assistidos": {},
-        "filmes_favoritos": {},
-    },
+usuarios = {}
 
-}
 
-def listar_filmes():
+def listar_filmes() -> None:
     for filme_id, filme_info in filmes.items():
         print(f"ID: {filme_id} - Título: {filme_info['titulo']} - Categoria: {filme_info['categoria']} - Avaliação da crítica: {filme_info['avaliacao']}")
 
 
+def registrar_usuario(nome: str) -> None:
+    """
+    Esta função adiciona um novo usuário ao dicionário "usuarios"
 
-def registrar_usuario():
-    ...
+    Args:
+        nome: Recebe o nome do novo usuário
+    """
+    usuarios[nome] = {
+        "avaliacoes": [],
+        "filmes_assistidos": [],
+        "filmes_favoritos": []
+    }
 
-def avaliar_filme(usuario_nome, filme_id, avaliacao):
+
+def avaliar_filme(usuario_nome: str, filme_id: int, avaliacao: float) -> None:
+    """
+      Esta função avalia determinado filme no dicionario do usuário selecionado
+
+      Args:
+          usuario_nome: Recebe o nome do usuário
+          filme_id: Recebe o identificador do filme
+          avaliacao: Recebe a nota
+      """
     usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
     if usuario and filme:
@@ -63,7 +68,15 @@ def avaliar_filme(usuario_nome, filme_id, avaliacao):
         print("Usuário ou filme não encontrado.")
 
 
-def favoritar_filme(usuario_nome, filme_id):
+def favoritar_filme(usuario_nome: str, filme_id: int) -> None:
+    """
+    Esta função marca determinado filme como assistido no dicionario do usuário selecionado
+
+    Args:
+        usuario_nome: Recebe o nome do usuário
+        filme_id: Recebe o identificador do filme
+
+    """
     usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
     if usuario and filme:
@@ -77,7 +90,14 @@ def favoritar_filme(usuario_nome, filme_id):
         print("Usuário ou filme não encontrado.")
 
 
-def marcar_assistido(usuario_nome, filme_id):
+def marcar_assistido(usuario_nome: str, filme_id: int) -> None:
+    """
+    Esta função marca determinado filme como assistido no dicionario do usuário selecionado
+
+    Args:
+        usuario_nome: Recebe o nome do usuário
+        filme_id: Recebe o identificador do filme
+    """
     usuario = usuarios.get(usuario_nome)
     filme = filmes.get(filme_id)
     if usuario and filme:
