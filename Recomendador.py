@@ -47,7 +47,7 @@ def registrar_usuario(nome: str) -> None:
     }
 
 
-def listar_usuarios():
+def listar_usuarios()-> None:
     """
         Esta função lista todos os usuários registrados
     """
