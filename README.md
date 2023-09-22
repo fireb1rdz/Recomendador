@@ -14,3 +14,6 @@ Nomenclaturas:
 | avaliar() |
 | assistidos() |
 | listar_midias() |
+
+## Trello
+https://trello.com/b/XKClADOm/recomendação-de-filmes-séries
